@@ -1,0 +1,9 @@
+<div class="container">
+    <h2>Transactions</h2>
+        <div class="wrap">
+                <transactions-form [deals]="deals$ | async"></transactions-form>
+                <transactions-total-table [pending]="pending_total$ | async" [data]="transactions_total$ | async" [form_request_data]="form_request_data$ | async"></transactions-total-table>
+                <transactions-table [pending]="transaction_pending$ | async" [transactions]="transactions$ | async" [total]="total_transaction_length$ | async"
+                                    [form_request_data]="form_request_data$ | async" [current_page]="current_page$ | async"></transactions-table>
+             </div>
+</div>

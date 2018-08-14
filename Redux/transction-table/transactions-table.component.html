@@ -1,0 +1,48 @@
+<spinner-block [isLoading]="pending" [styles]="{'min-height':'100px'}">
+    <div fxLayout="column" fxLayoutAlign="flex-start center" *ngIf="transactions.length">
+        <div class="table-container">
+            <table class="documents-table">
+                <tr class="table-head">
+                    <th style="width:20%;"><tooltip [description]="'misc.tooltip.transactions-table-date' | translate"  [className]="'statistic-header'">Date</tooltip></th>
+                    <th style="width:60%;"><tooltip [description]="'misc.tooltip.transactions-table-detail' | translate" [className]="'statistic-header'">Detail</tooltip></th>
+                    <th style="width:20%;"><tooltip [description]="'misc.tooltip.transactions-table-turnover' | translate" [className]="'statistic-header'">Turnover</tooltip></th>
+                <tr>
+                <tr *ngFor="let elem of transactions">
+                    <td style="width:20%;">{{elem.created | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+                    <td *ngIf="elem.loanId" style="width:60%; text-align: left; padding-left: 45px;">Transaction ID: {{elem.transactionId}} - Loan:{{elem.loanId}} - {{elem.purpose}} </td>
+                    <td *ngIf="!elem.loanId" style="width:60%; text-align: left; padding-left: 45px;">Transaction ID: {{elem.transactionId}} - {{elem.purpose}} </td>
+                <td style="width:20%;">
+                    <tooltip [description]="elem.amount" [className]="'statistick'">{{elem.amount | number:'1.0-2'}}
+                    <ng-container [ngSwitch]="form_request_data[2]">
+                        <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                        <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                    </ng-container>
+                    </tooltip>
+                </td>
+                </tr>
+            </table>
+        </div>
+        <div class="pager">
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(1)">First</a>
+                </li>
+                <li class="previous" [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(pager.currentPage - 1)">Previous</a>
+                </li>
+                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a (click)="setPage(page)">{{page}}</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.currentPage + 1)">Next</a>
+                </li>
+                <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.totalPages)">Last</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</spinner-block>
+<div class="error-message" *ngIf="emptyTransactionMessage">
+    There no transactions for this period
+</div>

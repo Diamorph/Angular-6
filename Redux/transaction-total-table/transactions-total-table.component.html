@@ -1,0 +1,110 @@
+<spinner-block [isLoading]="pending" [styles]="{'min-height':'100px'}">
+    <div fxLayout="column" fxLayoutAlign="flex-start center" *ngIf="data">
+        <div class="table-container">
+            <table class="documents-table">
+                <tr *ngIf="displayDates">
+                    <td colspan="2" class="text-center">Summary statement <b>{{currency}}</b></td>
+                </tr>
+                <tr *ngIf="displayDates">
+                    <td class="date_name">Opening balance {{start_date | date: 'dd.MM.yyyy'}}</td>
+                    <td class="date_data">{{data.startBalance}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.deposits">
+                    <td class="name" (click)="loadType('Deposits')">Deposits</td>
+                    <td class="data">{{data.deposits}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.investment">
+                    <td class="name" (click)="loadType('Investment')">Investment</td>
+                    <td class="data">{{data.investment}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.principalReceived">
+                    <td class="name" (click)="loadType('Principal received')">Principal received</td>
+                    <td class="data">{{data.principalReceived}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.principalPayment">
+                    <td class="name" (click)="loadType('Principal payment')">- Principal payment</td>
+                    <td class="data">{{data.principalPayment}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.pretermExit">
+                    <td class="name" (click)="loadType('Preterm exit')">- Preterm exit</td>
+                    <td class="data">{{data.pretermExit}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.buyBack">
+                    <td class="name" (click)="loadType('Buy Back')">- Buy back</td>
+                    <td class="data">{{data.buyBack}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.interestReceived">
+                    <td class="name" (click)="loadType('Interest received')">Interest received</td>
+                    <td class="data">{{data.interestReceived}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.withdrawals">
+                    <td class="name" (click)="loadType('Withdrawals')">Withdrawals</td>
+                    <td class="data">{{data.withdrawals}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="data.penalty">
+                    <td class="name" (click)="loadType('Penalty for early exit')">Penalty for early exit</td>
+                    <td class="data">{{data.penalty}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+                <tr *ngIf="displayDates">
+                    <td class="date_name">Closing balance {{end_date | date: 'dd.MM.yyyy'}}</td>
+                    <td class="date_data">{{data.endBalance}}
+                        <ng-container [ngSwitch]="currency">
+                            <ng-container *ngSwitchCase="'EUR'">€</ng-container>
+                            <ng-container *ngSwitchCase="'PLN'">zł</ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</spinner-block>

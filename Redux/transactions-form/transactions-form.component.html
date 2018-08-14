@@ -1,0 +1,68 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="transactions_container">
+        <div class="start_date">
+            <h5>Start date:</h5>
+            <click-outside (clickOutside)="closeDatepicker(startdate)">
+            <angular2-date-picker #startdate formControlName="start_date" [settings]="settings"></angular2-date-picker>
+            </click-outside>
+        </div>
+
+        <div class="end_date">
+            <h5>End date:</h5>
+            <click-outside (clickOutside)="closeDatepicker(enddate)">
+                <angular2-date-picker #enddate formControlName="end_date" [settings]="settings"></angular2-date-picker>
+            </click-outside>
+        </div>
+
+        <div class="currency">
+            <h5>Currency:</h5>
+            <dropdown-select
+                    [placeholder]="'Currency' | translate"
+                    [style]="'line'"
+                    formControlName="currency"
+                    [c]="form.get('currency')"
+                    [values]="['EUR','PLN']"
+                    [idd]="'currency'"
+                    (change)=setDeals($event)>
+            </dropdown-select>
+        </div>
+
+        <div class="type">
+            <h5>Type:</h5>
+            <dropdown-select
+            [placeholder]="'Type' | translate"
+            [style]="'line'"
+            formControlName="type"
+            [c]="form.get('type')"
+            [nestedValues]="true"
+            [translate_JSON]="true"
+            [values]="dealTypes"
+            [idd]="'type'">
+            </dropdown-select>
+        </div>
+
+        <div class="deal">
+            <h5>Deal:</h5>
+            <dropdown-select
+                    [placeholder]="'form.placeholder.select-deal' | translate"
+                    [submitted]="isSubmitted"
+                    [style]="'line'"
+                    formControlName="deal"
+                    [c]="form.get('deal')"
+                    [values]="mobileView"
+                    [nestedValues]="true"
+                    [idd]="'deal'">
+                ></dropdown-select>
+        </div>
+
+        <div class="search">
+            <button type="submit" class="invest button" [innerHTML]="'Search' | translate"></button>
+        </div>
+
+    </div>
+
+</form>
+<div class="form-error text-center date-error" *ngIf="date_error">Start date must be earlier than end date</div>
+
+<hr/>
+

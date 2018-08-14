@@ -1,0 +1,124 @@
+.transaction_table_wrapper{
+  min-height: 200px;
+}
+
+.table-container{
+  width: 100%;
+  overflow-x:hidden;
+  overflow-y:hidden;
+  padding-bottom: 30px;
+}
+
+.documents-table {
+  font-family:Arial, Helvetica, sans-serif;
+  color:#666;
+  font-size:14px;
+  width: 100%;
+  background: #f6f6f6;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+  background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+  border:#ccc 1px solid;
+  border-collapse:separate;
+  text-align: center;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  border-radius:3px;
+
+  -moz-box-shadow: 0 1px 2px #d1d1d1;
+  -webkit-box-shadow: 0 1px 2px #d1d1d1;
+  box-shadow: 0 1px 2px #d1d1d1;
+  td, th {
+    background: transparent;
+  }
+  .table-head{
+    background: #5869ad;
+  }
+  th{
+    font-weight:bold;
+    padding: 15px;
+    border-top:1px solid #fafafa;
+    border-bottom:1px solid #e0e0e0;
+    color:#fff;
+  }
+  tr td {
+    padding: 5px;
+    border-top: 1px solid #ffffff;
+    border-bottom:1px solid #e0e0e0;
+  }
+  .table-head:hover{
+    background: #5869ad;
+    color:#666;
+  }
+  tr:nth-child(even){
+    background:#eaebec;
+  }
+  tr:hover {
+    background: rgba(88,105,173,0.5);
+    color: black; /* Цвет текста при наведении */
+  }
+  tr td:last-child{
+    -moz-border-radius-bottomright:3px;
+    -webkit-border-bottom-right-radius:3px;
+    border-bottom-right-radius:3px;
+  }
+}
+
+.pager{
+  display: inline-flex;
+  ul{
+    display: inline-flex;
+    text-decoration: none;
+    color: white;
+    li{
+      a {
+       color: black;
+       padding: 10px 15px;
+       display: block;
+       text-decoration: none;
+    }
+      //border: 2px solid #969595;
+      //background: #ababab;
+      list-style-type: none;
+      color: white;
+      text-decoration: none;
+    }
+    li:hover {
+      background: #ddd;
+    }
+    li.active {
+    a {
+      color: white;
+    }
+      box-shadow:0 0 10px 0 rgba(0,0,0,.3) inset;
+      background: #5869ad;
+    }
+  }
+}
+
+.error-message{
+  color: red;
+}
+//
+//@media screen and (max-width: 991px){
+//  .table-container{
+//    overflow-x: scroll;
+//    .documents-table{
+//      .total td{
+//        border: 0;
+//      }
+//      .fixed{
+//        position: -webkit-sticky;
+//        position: sticky;
+//        left: 0;
+//        z-index: 3;
+//        background: #eaebec;
+//        -webkit-box-shadow: 3px 0px 0px 0px rgba(0,0,0,0.39);
+//        -moz-box-shadow: 3px 0px 0px 0px rgba(0,0,0,0.39);
+//        box-shadow: 3px 0px 0px 0px rgba(0,0,0,0.39);
+//      }
+//      .table-head .fixed{
+//        background-color: #5869ad;
+//      }
+//    }
+//  }
+//}

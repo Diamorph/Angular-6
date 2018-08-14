@@ -1,0 +1,16 @@
+@media screen and (max-width:1199px) {
+  h2{
+    margin-left: 100px;
+  }
+  .wrap {
+    margin-left: 100px;
+  }
+}
+@media screen and (max-width: 992px) {
+  h2{
+    margin-left: 0;
+  }
+  .wrap {
+    margin-left: 0;
+  }
+}
